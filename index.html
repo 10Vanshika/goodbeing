@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particle Animation</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #3498db;
+    border-radius: 50%;
+    animation: particleAnim 0.5s ease-out;
+  }
+  @keyframes particleAnim {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- This div will contain particles -->
+</div>
+<button onclick="createParticles()">Click Me</button>
+
+<script>
+function createParticles() {
+  const container = document.querySelector('.container');
+  
+  // Create multiple particles
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Randomize particle position
+    const x = Math.random() * container.clientWidth;
+    const y = Math.random() * container.clientHeight;
+    
+    // Set particle position
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    
+    // Append particle to container
+    container.appendChild(particle);
+    
+    // Remove particle after animation ends
+    particle.addEventListener('animationend', () => {
+      particle.remove();
+    });
+  }
+}
+</script>
+</body>
+</html>
