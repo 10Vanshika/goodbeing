@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alphabets</title>
+    <style>
+        .alphabet {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="alphabets"></div>
+
+    <script>
+        const container = document.getElementById('alphabets');
+        for(let i = 65; i <= 90; i++) {
+            const letter = String.fromCharCode(i);
+            const span = document.createElement('span');
+            span.className = 'alphabet';
+            span.textContent = letter;
+            container.appendChild(span);
+        }
+    </script>
+</body>
+</html>
