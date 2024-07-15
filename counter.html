@@ -29,6 +29,10 @@
     <div class="container">
         <div class="counter" id="counter">0</div>
         <button onclick="incrementCounter()">Increment</button>
+        <button onclick="decrementCounter()">decrement</button>
+        <button onclick="halfCounter()">half</button>
+        <button onclick="doubleCounter()">double</button>
+
     </div>
     <script>
         async function incrementCounter() {
@@ -45,19 +49,9 @@
                 console.error('Error:', error);
             }
         }
-
-    </script>
-</body>
-</html>
-
-
-<body>
-        <button onclick="decrementCounter()">decrement</button>
-    </div>
-    <script>
-        async function decrementCounter() {
+        async function incrementCounter() {
             try {
-                const response = await fetch('/decrementcounter');
+                const response = await fetch('/incrementcounter');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -69,8 +63,34 @@
                 console.error('Error:', error);
             }
         }
-
-        // Function to fetch the initial value
+        async function incrementCounter() {
+            try {
+                const response = await fetch('/incrementcounter');
+                if (response.ok) {
+                    const data = await response.text();
+                    counterValue = data;
+                    document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        async function incrementCounter() {
+            try {
+                const response = await fetch('/incrementcounter');
+                if (response.ok) {
+                    const data = await response.text();
+                    counterValue = data;
+                    document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
         async function fetchInitialValue() {
             try {
                 const response = await fetch('/countervalue');
@@ -90,6 +110,8 @@
         window.onload = function() {
             fetchInitialValue();
         };
+
     </script>
 </body>
 </html>
+
