@@ -46,10 +46,20 @@
             }
         }
 
-        // Function to fetch the initial value
-        async function fetchInitialValue() {
+    </script>
+</body>
+</html>
+
+
+<body>
+    <div class="container">
+        <div class="Counter" id="counter">100</div>
+        <button onclick="decrementCounter()">decrement</button>
+    </div>
+    <script>
+        async function decrementCounter() {
             try {
-                const response = await fetch('/countervalue');
+                const response = await fetch('/decrementcounter');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -62,36 +72,6 @@
             }
         }
 
-        // Fetch and set the initial value when the page loads
-        window.onload = function() {
-            fetchInitialValue();
-        };
-    </script>
-</body>
-</html>
-
-
-<body>
-    <div class="container">
-        <div class="Decrement" id="Decrement">100</div>
-        <button onclick="decrementCounter()">decrement</button>
-    </div>
-    <script>
-        async function decrementCounter() {
-            try {
-                const response = await fetch('/decrementcounter');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("Decrement").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-
         // Function to fetch the initial value
         async function fetchInitialValue() {
             try {
@@ -99,7 +79,7 @@
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
-                    document.getElementById("Decrement").innerText = counterValue;
+                    document.getElementById("counter").innerText = counterValue;
                 } else {
                     console.error('Failed to fetch initial value');
                 }
