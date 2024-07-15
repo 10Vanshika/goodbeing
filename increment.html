@@ -1,0 +1,46 @@
+from flask import Flask, request, jsonify, render_template_string
+
+app = Flask(__name__)
+
+# Initial counter value
+counter = 0
+
+@app.route('/')
+def home():
+    return render_template_string('''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Incrementer</title>
+        </head>
+        <body>
+            <h1>Incrementer</h1>
+            <p>Current Counter: <span id="counter">{{ counter }}</span></p>
+            <button onclick="incrementCounter()">Increment</button>
+            <script>
+                function incrementCounter() {
+                    fetch('/increment', { method: 'POST' })
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('counter').innerText = data.counter;
+                        });
+                }
+            </script>
+        </body>
+        </html>
+    ''', counter=counter)
+
+@app.route('/counter', methods=['GET'])
+def get_counter():
+    return jsonify(counter=str(counter))
+
+@app.route('/increment', methods=['POST'])
+def increment_counter():
+    global counter
+    counter += 1
+    return jsonify(counter=str(counter))
+
+if __name__ == '__main__':
+    app.run(debug=True)
