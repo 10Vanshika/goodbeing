@@ -49,9 +49,9 @@
                 console.error('Error:', error);
             }
         }
-        async function incrementCounter() {
+        async function decrementCounter() {
             try {
-                const response = await fetch('/incrementcounter');
+                const response = await fetch('/decrementcounter');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -63,9 +63,9 @@
                 console.error('Error:', error);
             }
         }
-        async function incrementCounter() {
+        async function halfCounter() {
             try {
-                const response = await fetch('/incrementcounter');
+                const response = await fetch('/halfcounter');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -77,9 +77,9 @@
                 console.error('Error:', error);
             }
         }
-        async function incrementCounter() {
+        async function doubleCounter() {
             try {
-                const response = await fetch('/incrementcounter');
+                const response = await fetch('/doublecounter');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
