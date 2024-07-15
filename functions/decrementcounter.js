@@ -1,8 +1,8 @@
 export async function onRequest(context) {
     const { MYKVSTORE } = context.env;
-    let counterValue = await MYKVSTORE.get('Decrement');
+    let counterValue = await MYKVSTORE.get('counter');
     counterValue = parseInt(counterValue) || 0;
     counterValue -= 1;
-    await MYKVSTORE.put('Decrement', counterValue);
+    await MYKVSTORE.put('counter', counterValue);
     return new Response(counterValue);
 }
