@@ -31,12 +31,41 @@
         <button onclick="incrementCounter()">Increment</button>
     </div>
     <script>
-        let counter = 0;
-
-        function incrementCounter() {
-            counter += 1;
-            document.getElementById('counter').innerText = counter;
+        async function incrementCounter() {
+            try {
+                const response = await fetch('/incrementcounter');
+                if (response.ok) {
+                    const data = await response;
+                    counterValue = data;
+                    document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
+
+        // Function to fetch the initial value
+        async function fetchInitialValue() {
+            try {
+                const response = await fetch('/countervalue');
+                if (response.ok) {
+                    const data = await response;
+                    counterValue = data;
+                    document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Fetch and set the initial value when the page loads
+        window.onload = function() {
+            fetchInitialValue();
+        };
     </script>
 </body>
 </html>
