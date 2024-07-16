@@ -4,3 +4,7 @@ export async function onRequest(context) {
     counterValue = parseFloat(counterValue) || 0;
     return new Response(counterValue);
   }  
+
+
+
+  
