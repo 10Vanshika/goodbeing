@@ -93,17 +93,9 @@
             }
         }
         async function resetfunc() {
-            try {
-                const response = await fetch('/resetfunc');
-                if (response.ok) {
-                    const data = await response.text();
+            
                     document.getElementById("counter").innerText = 0;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
+                
         }
     
             
