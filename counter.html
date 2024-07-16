@@ -36,101 +36,58 @@
 
     </div>
     <script>
-        async function incrementCounter() {
-            try {
-                const response = await fetch('/combinefile?action=increment');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-        async function decrementCounter() {
-            try {
-                const response = await fetch('/combinefile?action=decrement');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-        async function halfCounter() {
-            try {
-                const response = await fetch('/combinefile?action=half');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-        async function doubleCounter() {
-            try {
-                const response = await fetch('/combinefile?action=double');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-        async function resetfunc() {
-            try {
-                const response = await fetch('/combinefile?action=reset');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }  
-                
-        
-    
-            
-        
-        async function fetchInitialValue() {
-            try {
-                const response = await fetch('/combinefile?action=getvalue');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("counter").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        let counterValue; // Declare counterValue at a higher scope
 
+async function incrementCounter() {
+    await updateCounter('increment');
+}
+async function decrementCounter() {
+    await updateCounter('decrement');
+}
+async function halfCounter() {
+    await updateCounter('half');
+}
+async function doubleCounter() {
+    await updateCounter('double');
+}
+async function resetfunc() {
+    await updateCounter('reset');
+}
 
-        // Fetch and set the initial value when the page loads
-        window.onload = function() {
-            fetchInitialValue();
-        };
+async function updateCounter(action) {
+    try {
+        const response = await fetch(`/combinefile?action=${action}`);
+        if (response.ok) {
+            const data = await response.text();
+            counterValue = data;
+            document.getElementById("counter").innerText = counterValue;
+        } else {
+            console.error('Failed to fetch counter value');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function fetchInitialValue() {
+    try {
+        const response = await fetch('/combinefile');
+        if (response.ok) {
+            const data = await response.text();
+            counterValue = data;
+            document.getElementById("counter").innerText = counterValue;
+        } else {
+            console.error('Failed to fetch initial value');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Fetch and set the initial value when the page loads
+window.onload = function() {
+    fetchInitialValue();
+};
 
     </script>
 </body>
