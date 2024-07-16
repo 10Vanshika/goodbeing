@@ -113,7 +113,7 @@
         
         async function fetchInitialValue() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=getvalue');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
