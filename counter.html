@@ -110,11 +110,11 @@ async function fetchInitialValue() {
 }
 async function commentfunc() {
     try {
-        const response = await fetch('/commentfunc?comment=');
+        const response = await fetch('/commentfunc?action=comment');
         if (response.ok) {
             const data = await response.text();
-            counterValue = data;
-            document.getElementById("comment").innerText = counterValue;
+            value = data;
+            document.getElementById("comment").innerText = value;
         } else {
             console.error('Failed to fetch initial value');
         }
