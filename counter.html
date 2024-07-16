@@ -98,14 +98,12 @@
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
-                    document.getElementById("reset").innerText = counterValue;
-                } else {
-                    console.error('Failed to fetch initial value');
+                    document.getElementById("reset").innerText = 0;
                 }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+                }
+            } 
+            
+        
         async function fetchInitialValue() {
             try {
                 const response = await fetch('/countervalue');
