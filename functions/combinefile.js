@@ -18,7 +18,7 @@ export async function onRequest(context) {
         counterValue = counterValue*2;
        
     }
-    else{
+    else if(action === 'reset'){
         counterValue === 0;
         
     }
