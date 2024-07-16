@@ -19,7 +19,7 @@ export async function onRequest(context) {
        
     }
     else if(action === 'reset'){
-        counterValue === 0;
+        counterValue = 0;
         
     }
 
