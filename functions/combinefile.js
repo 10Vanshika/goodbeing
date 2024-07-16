@@ -6,15 +6,15 @@ export async function onRequest(context) {
     let counterValue = await MYKVSTORE.get('counter');
     counterValue = parseFloat(counterValue) || 0;
 
-    if (action ='increment') {
+    if (action =='increment') {
         counterValue += 1;
     } else if(action = 'decrement'){
         counterValue -= 1;
         
-    }else if(action ='half'){
+    }else if(action =='half'){
         counterValue = counterValue/2;
       
-    }else if (action ='double'){
+    }else if (action =='double'){
         counterValue = counterValue*2;
        
     }
