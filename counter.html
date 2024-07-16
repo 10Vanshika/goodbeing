@@ -81,7 +81,7 @@ async function resetfunc() {
 
 async function updateCounter(action) {
     try {
-        const response = await fetch(`/combinefile?action=${action}`);
+        const response = await fetch(`/combinefile?mgfuyaction=${action}`);
         if (response.ok) {
             const data = await response.text();
             counterValue = data;
