@@ -109,19 +109,26 @@ async function fetchInitialValue() {
     }
 }
 async function commentfunc() {
-    try {
-        const response = await fetch('/commentfunc');
-        if (response.ok) {
-            const data = await response.text();
-            counterValue = data;
-            document.getElementById("comment").innerText = counterValue;
-        } else {
-            console.error('Failed to fetch initial value');
+            try {
+                const response = await fetch('/commmentfunc?action=getComments');
+                if (response.ok) {
+                    const comments = await response.json();
+                    const commentsList = document.getElementById("commentsList");
+                    commentsList.innerHTML = '';
+                    comments.forEach(comment => {
+                        const li = document.createElement("li");
+                        li.className = "comment";
+                        li.textContent = comment;
+                        commentsList.appendChild(li);
+                    });
+                } else {
+                    console.error('Failed to fetch comments');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+
 
 // Fetch and set the initial value when the page loads
 window.onload = function() {
