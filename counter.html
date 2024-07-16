@@ -114,7 +114,7 @@ async function commentfunc() {
         if (response.ok) {
             const data = await response.text();
             counterValue = data;
-            document.getElementById("commnet").innerText = counterValue;
+            document.getElementById("comment").innerText = counterValue;
         } else {
             console.error('Failed to fetch initial value');
         }
