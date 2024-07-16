@@ -92,16 +92,7 @@
                 console.error('Error:', error);
             }
         }
-        async function resetfunc() {
-            try {
-                const response = await fetch('/resetfunc');
-                if (response.ok) {
-                    const data = await response.text();
-                    counterValue = data;
-                    document.getElementById("reset").innerText = 0;
-                }
-                }
-            } 
+    
             
         
         async function fetchInitialValue() {
@@ -118,6 +109,7 @@
                 console.error('Error:', error);
             }
         }
+        
 
         // Fetch and set the initial value when the page loads
         window.onload = function() {
