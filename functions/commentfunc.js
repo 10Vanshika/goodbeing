@@ -7,13 +7,13 @@ export async function onRequest(context) {
 
     if (request.method === 'POST' && action === 'addComment') {
         const comment = await request.text();
-        let comments = await MYKVSTORE.get('comments');
-        comments = comments ? JSON.parse(comments) : [];
+        let comments = await MYKVSTORE.get('comment');
+        comments = comments ? JSON.parse(comment) : [];
         comments.push(comment);
-        await MYKVSTORE.put('comments', JSON.stringify(comments));
+        await MYKVSTORE.put('comment', JSON.stringify(comments));
         responseContent = 'Comment added successfully';
     } else if (request.method === 'GET' && action === 'getComments') {
-        let comments = await MYKVSTORE.get('comments');
+        let comments = await MYKVSTORE.get('comment');
         responseContent = comments ? comments : '[]';
     } else {
         responseContent = 'Invalid request';
