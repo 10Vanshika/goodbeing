@@ -38,7 +38,7 @@
     <script>
         async function incrementCounter() {
             try {
-                const response = await fetch('/incrementcounter');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -52,7 +52,7 @@
         }
         async function decrementCounter() {
             try {
-                const response = await fetch('/decrementcounter');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -66,7 +66,7 @@
         }
         async function halfCounter() {
             try {
-                const response = await fetch('/halfcounter');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -80,7 +80,7 @@
         }
         async function doubleCounter() {
             try {
-                const response = await fetch('/doublecounter');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -94,7 +94,7 @@
         }
         async function resetfunc() {
             try {
-                const response = await fetch('/resetfunc');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -113,7 +113,7 @@
         
         async function fetchInitialValue() {
             try {
-                const response = await fetch('/countervalue');
+                const response = await fetch('/combinefile');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
