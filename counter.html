@@ -93,10 +93,21 @@
             }
         }
         async function resetfunc() {
-            
-                    document.getElementById("counter").innerText = 0;
+            try {
+                const response = await fetch('/resetfunc');
+                if (response.ok) {
+                    const data = await response.text();
+                    counterValue = data;
+                    document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }  
                 
-        }
+        
     
             
         
