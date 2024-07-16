@@ -32,6 +32,7 @@
         <button onclick="decrementCounter()">decrement</button>
         <button onclick="halfCounter()">half</button>
         <button onclick="doubleCounter()">double</button>
+        <button onclick="resetfunc()">reset</button>
 
     </div>
     <script>
@@ -84,6 +85,20 @@
                     const data = await response.text();
                     counterValue = data;
                     document.getElementById("counter").innerText = counterValue;
+                } else {
+                    console.error('Failed to fetch initial value');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        async function resetfunc() {
+            try {
+                const response = await fetch('/resetfunc');
+                if (response.ok) {
+                    const data = await response.text();
+                    counterValue = data;
+                    document.getElementById("reset").innerText = counterValue;
                 } else {
                     console.error('Failed to fetch initial value');
                 }
