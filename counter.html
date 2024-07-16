@@ -102,7 +102,7 @@
         
         async function fetchInitialValue() {
             try {
-                const response = await fetch('/resetfunc');
+                const response = await fetch('/countervalue');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
