@@ -23,5 +23,7 @@ export async function onRequest(context) {
         counterValue === 0;
         await MYKVSTORE.put('counter',counterValue);
     }
+
+    
     return new Response(counterValue);
 }
