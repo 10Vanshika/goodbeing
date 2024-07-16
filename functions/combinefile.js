@@ -1,22 +1,22 @@
 export async function onRequest(context) {
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
-    const action = searchParams.get('action');
+    const myaction = searchParams.get('action');
 
     let counterValue = await MYKVSTORE.get('counter');
     counterValue = parseFloat(counterValue) || 0;
 
-    if (action ==='increment') {
+    if (myaction ==='increment') {
         counterValue += 1;
-    } else if(action === 'decrement'){
+    } else if(myaction === 'decrement'){
         counterValue -= 1;
-    } else if(action ==='half'){
+    } else if(myaction ==='half'){
         counterValue = counterValue/2;
-    } else if (action ==='double'){
+    } else if (myaction ==='double'){
         counterValue = counterValue*2;
-    } else if(action === 'reset'){
+    } else if(myaction === 'reset'){
         counterValue = 0;
-    } else if (action == 'getvalue') {
+    } else if (myaction == 'getvalue') {
         return new Response(counterValue);
     }
 
