@@ -38,7 +38,7 @@
     <script>
         async function incrementCounter() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=increment');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -52,7 +52,7 @@
         }
         async function decrementCounter() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=decrement');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -66,7 +66,7 @@
         }
         async function halfCounter() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=half');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -80,7 +80,7 @@
         }
         async function doubleCounter() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=double');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
@@ -94,7 +94,7 @@
         }
         async function resetfunc() {
             try {
-                const response = await fetch('/combinefile');
+                const response = await fetch('/combinefile?action=reset');
                 if (response.ok) {
                     const data = await response.text();
                     counterValue = data;
