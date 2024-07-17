@@ -56,7 +56,7 @@
 
         <h2>Leave a Comment</h2>
         <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
-        <button onclick="commentfunc()">Submit</button>
+        <button onclick="saveMessage()">Submit</button>
         <ul class="comments-list" id="commentsList"></ul>
 
     </div>
@@ -108,21 +108,28 @@ async function fetchInitialValue() {
         console.error('Error:', error);
     }
 }
-async function commentfunc() {
-    try {
-        const response = await fetch('/commentfunc?action=comment');
-        if (response.ok) {
-            const data = await response.text();
-            value = data;
-            document.getElementById("comment").innerText = value;
-        } else {
-            console.error('Failed to fetch initial value');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+    async function saveMessage() {
+            const message = document.getElementById('message').value;
 
+            try {
+                const response = await fetch('/combinefile?action=saveMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                if (response.ok) {
+                    const data = await response.text();
+                    document.getElementById('response').innerText = data;
+                } else {
+                    document.getElementById('response').innerText = 'Failed to save message';
+                }
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error: ' + error;
+            }
+        }
 
 // Fetch and set the initial value when the page loads
 window.onload = function() {
