@@ -109,17 +109,10 @@ async function fetchInitialValue() {
     }
 }
     async function saveMessage() {
-            const message = document.getElementById('message').value;
 
             try {
-                const response = await fetch('/combinefile?action=saveMessage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message: message })
-                });
-
+                const response = await fetch('/combinefile?action=saveMessage'), {
+                   
                 if (response.ok) {
                     const data = await response.text();
                     document.getElementById('response').innerText = data;
@@ -130,6 +123,7 @@ async function fetchInitialValue() {
                 document.getElementById('response').innerText = 'Error: ' + error;
             }
         }
+    }
 
 // Fetch and set the initial value when the page loads
 window.onload = function() {
