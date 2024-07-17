@@ -109,9 +109,9 @@ async function fetchInitialValue() {
     }
 }
     async function saveMessage() {
-
+const message = await MYKVSTORE.get('comment');
             try {
-                const response = await fetch('/combinefile?action=saveMessage'), {
+                const response = await fetch('/combinefile?action=saveMessage'); {
                    
                 if (response.ok) {
                     const data = await response.text();
@@ -119,7 +119,8 @@ async function fetchInitialValue() {
                 } else {
                     document.getElementById('response').innerText = 'Failed to save message';
                 }
-            } catch (error) {
+            }
+             catch (error) {
                 document.getElementById('response').innerText = 'Error: ' + error;
             }
         }
