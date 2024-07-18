@@ -110,17 +110,13 @@ async function fetchInitialValue() {
 }
 async function saveMessage() {
     const message = document.getElementById('commentInput').value;
-            const response = await fetch(`/commentfunc?comment=${action}`);
-            if (message) {
-                // Store the message in a variable
-                let storedMessage = message;
-
-                // Display the stored message
-                document.getElementById('commentInput').innerText = 'Stored Message: ' + storedMessage;
-            } else {
-                document.getElementById('commentInput').innerText = 'Please enter a message.';
-            } 
-        }
+    const response = await fetch(`/commentfunc?comment=${message}`);
+    if (response.ok) {
+        console.log('Message Saved');
+    } else {
+        console.error('Failed to save message');
+    }
+}
 
 // Fetch and set the initial value when the page loads
 window.onload = function() {
