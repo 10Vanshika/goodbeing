@@ -110,7 +110,7 @@ async function fetchInitialValue() {
 }
 async function saveMessage() {
     const message = document.getElementById('commentInput').value;
-            const response = await fetch(`/commmentfunc?comment=message`);
+            const response = await fetch(`/commentfunc?comment=message`);
             if (message) {
                 // Store the message in a variable
                 let storedMessage = message;
