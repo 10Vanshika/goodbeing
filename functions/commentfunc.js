@@ -4,7 +4,7 @@ export async function onRequest(context) {
     const { searchParams } = new URL(context.request.url);
     const action = searchParams.get('action');
 
-    if (action === 'saveMessage') {
+    if (action === 'message') {
         try {
             // Parse the request body
             const requestBody = await context.request.json();
@@ -15,7 +15,7 @@ export async function onRequest(context) {
             }
 
             // Store the message in KV store with a unique key
-            const messageKey = `message-${Date.now()}`;
+            const messageKey = 'message';
             await MYKVSTORE.put(messageKey, message);
 
             return new Response('Message saved successfully', { status: 200 });

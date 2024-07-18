@@ -109,27 +109,17 @@ async function fetchInitialValue() {
     }
 }
 async function saveMessage() {
-            const message = document.getElementById('messageInput').value;
+    const message = document.getElementById('commentInput').value;
+            const response = await fetch(`/commmentfunc?comment=message`);
+            if (message) {
+                // Store the message in a variable
+                let storedMessage = message;
 
-            if (!message) {
-                document.getElementById('responseMessage').innerText = 'Please enter a message.';
-                return;
-            }
-
-            try {
-                const response = await fetch('/combinefile?action=saveMessage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message: message })
-                });
-
-                const data = await response.text();
-                document.getElementById('responseMessage').innerText = data;
-            } catch (error) {
-                document.getElementById('responseMessage').innerText = 'Error: ' + error;
-            }
+                // Display the stored message
+                document.getElementById('response').innerText = 'Stored Message: ' + storedMessage;
+            } else {
+                document.getElementById('response').innerText = 'Please enter a message.';
+            } 
         }
 
 // Fetch and set the initial value when the page loads
