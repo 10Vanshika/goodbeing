@@ -8,14 +8,7 @@ export async function onRequest(context) {
     if (action === 'message') {
         console.log("line 2")
         try {
-            console.log("line 3")
-            console.log("line 4")
-            if (!message) {
-                console.log("line 5")
-                return new response('Message is required', { status: 400 });
-                console.log("line 6")
-            }
-
+            
             // Store the message in KV store with a unique key
             const messageKey = 'message';
             console.log("line 7")
