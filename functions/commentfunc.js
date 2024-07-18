@@ -11,8 +11,9 @@ export async function onRequest(context) {
         try {
             
             // Store the message in KV store with a unique key
+            const messageKey = searchParams.get('comment');
             console.log(messageKey);
-            const messageKey = await MYKVSTORE.put('comment', messageKey);
+            await MYKVSTORE.put('comment', messageKey);
             console.log("line 8")
 
             return new Response('Message saved successfully', { status: 200 });
