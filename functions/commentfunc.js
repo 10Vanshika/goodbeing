@@ -8,8 +8,6 @@ export async function onRequest(context) {
     if (action === 'message') {
         console.log("line 2")
         try {
-            // Parse the request body
-            const requestBody = await context.request.json();
             console.log("line 3")
             const message = requestBody.message;
             console.log("line 4")
