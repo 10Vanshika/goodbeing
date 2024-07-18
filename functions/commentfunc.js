@@ -4,14 +4,15 @@ export async function onRequest(context) {
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
     const action = searchParams.get('comment');
+    console.log(action);
 
     if (action === 'message') {
         console.log("line 2")
         try {
             
             // Store the message in KV store with a unique key
-            const messageKey = 'message';
-            console.log("line 7")
+            const messageKey = message;
+            console.log(messageKey);
             await MYKVSTORE.put('comment', messageKey);
             console.log("line 8")
 
