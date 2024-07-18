@@ -3,17 +3,15 @@ export async function onRequest(context) {
     console.log("Function started")
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
-    const action = searchParams.get('comment');
-    console.log(action);
+    const comment = searchParams.get('comment');
+    console.log(comment);
 
-    if (action === 'message') {
+    if (comment) {
         console.log("line 2")
         try {
             
             // Store the message in KV store with a unique key
-            const messageKey = searchParams.get('comment');
-            console.log(messageKey);
-            await MYKVSTORE.put('comment', messageKey);
+            await MYKVSTORE.put('comment', comment);
             console.log("line 8")
 
             return new Response('Message saved successfully', { status: 200 });
