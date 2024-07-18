@@ -11,7 +11,7 @@ export async function onRequest(context) {
         try {
             
             // Store the message in KV store with a unique key
-            const messageKey = message;
+            const messageKey = ${message};
             console.log(messageKey);
             await MYKVSTORE.put('comment', messageKey);
             console.log("line 8")
