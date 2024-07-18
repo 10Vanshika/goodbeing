@@ -9,7 +9,6 @@ export async function onRequest(context) {
         console.log("line 2")
         try {
             console.log("line 3")
-            const message = requestBody.message;
             console.log("line 4")
             if (!message) {
                 console.log("line 5")
