@@ -1,6 +1,6 @@
 // Cloudflare Worker Script
 export async function onRequest(context) {
-    console.log("Function started");
+    console.log("Function started")
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
     const action = searchParams.get('comment');
@@ -17,7 +17,7 @@ export async function onRequest(context) {
 
             // Store the message in KV store with a unique key
             const messageKey = 'message';
-            await MYKVSTORE.put(message, messageKey);
+            await MYKVSTORE.put(messageKey, message);
 
             return new Response('Message saved successfully', { status: 200 });
         } catch (error) {
