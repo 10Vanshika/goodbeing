@@ -1,5 +1,6 @@
 // Cloudflare Worker Script
 export async function onRequest(context) {
+    console.log("Function started");
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
     const action = searchParams.get('comment');
