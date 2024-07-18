@@ -2,7 +2,7 @@
 export async function onRequest(context) {
     const { MYKVSTORE } = context.env;
     const { searchParams } = new URL(context.request.url);
-    const action = searchParams.get('action');
+    const action = searchParams.get('comment');
 
     if (action === 'message') {
         try {
