@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Increment Button</title>
+    <title>Counter Page</title>
     <style>
         body {
             display: flex;
@@ -53,6 +53,8 @@
         <button onclick="halfCounter()">half</button>
         <button onclick="doubleCounter()">double</button>
         <button onclick="resetfunc()">reset</button>
+        <button onclick="burger()">Khushi site</button>
+
 
         <h2>Leave a Comment</h2>
         <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
@@ -115,6 +117,15 @@ async function saveMessage() {
         console.log('Message Saved');
     } else {
         console.error('Failed to save message');
+    }
+}
+async function burger() {
+    const message = document.getElementById('counter').value;
+    const response = await fetch(`/burger?data=${data}`);
+    if (response.ok) {
+        console.log('Get data');
+    } else {
+        console.error('Failed to get data');
     }
 }
 
