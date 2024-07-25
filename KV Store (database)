@@ -1,0 +1,14 @@
+KV Store (database)
+||
+Worker (JS) - Server Side (using functions)
+    Get function
+        Fetch value from KV store and return current value
+    Post function
+        Increment current value for KV store and return inremented value
+
+
+Browser (HTML & JS) - Client Side
+counter.html (Button code)
+Request to server side function
+    Get request to getch current value
+    Post request to incrment current value and return incremented value
