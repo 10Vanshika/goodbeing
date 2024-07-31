@@ -53,7 +53,7 @@
         <button onclick="halfCounter()">half</button>
         <button onclick="doubleCounter()">double</button>
         <button onclick="resetfunc()">reset</button>
-        <button onclick="burger()">Khushi site</button>
+       
 
 
         <h2>Leave a Comment</h2>
@@ -119,15 +119,7 @@ async function saveMessage() {
         console.error('Failed to save message');
     }
 }
-async function burger() {
-    const message = document.getElementById('counter').value;
-    const response = await fetch(`/burger?data=${data}`);
-    if (response.ok) {
-        console.log('Get data');
-    } else {
-        console.error('Failed to get data');
-    }
-}
+
 
 // Fetch and set the initial value when the page loads
 window.onload = function() {
